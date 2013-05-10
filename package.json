@@ -1,6 +1,6 @@
 {
   "name": "hashstream",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hash a readabale stream",
   "main": "index.js",
   "devDependencies": {
