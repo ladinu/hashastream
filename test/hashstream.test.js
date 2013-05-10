@@ -1,5 +1,15 @@
-var path = require('path');
-var fs = require('fs');
+var path   = require('path');
+var assert = require('assert');
+var fs     = require('fs');
+
+var hashStream = require('../');
+
+var fname  = 'tf0';
+var hashes = {
+    'sha1' : '9f6fd4c282035567e042b54e50c51081bf311abb'
+  , 'md5'  : '78fb701bc318daaef09211b8462addcd'
+}
+
 
 var read = function(fname) {
   var fname = path.join(__dirname, fname);
@@ -8,8 +18,11 @@ var read = function(fname) {
 
 describe('hashstream', function() {
 
-  it.skip('should hash a stream', function() {
-
+  it('should return a sha1 in hex by default', function(done) {
+    hashStream(read(fname), function(err, hash) {
+      if (err) return done(err);
+      done(assert.strictEqual(hash, hashes.sha1));
+    });
   });
 
   it.skip('should throw error when no argument are given', function() {
@@ -20,7 +33,7 @@ describe('hashstream', function() {
 
   });
 
-  it('should throw error when stream is not readable', function() {
+  it.skip('should throw error when stream is not readable', function() {
 
   });
 
