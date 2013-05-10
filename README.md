@@ -22,7 +22,7 @@ var hashStream = require('hashstream');
 
 var stream = request('http://example.com');
 
-hashStream(stream, function(hash, err) {
+hashStream(stream, function(err, hash) {
   if (!err) console.log("example.com SHA1 hash: ", hash);
 });
 ```
@@ -30,6 +30,15 @@ hashStream(stream, function(hash, err) {
 ## API
 
 ### hashstream(stream, [options], callback)
+
+  * `stream` must be readable node stream 
+  
+  * `options` allow you to specefiy the hash type and digest encoding. By default
+    `options` is set to the following: `{'hash': 'sha1', 'digest': 'hex'}`
+
+  * `callback(err, hash)` will be called with an `error` and `hash` value when the given 
+    stream end.
+
 
 
 ## Testing
