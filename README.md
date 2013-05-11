@@ -17,16 +17,26 @@ $ npm link
 ## Examples
 
 Get a SHA1 hash of example.com
-```javascript
+```js
 var hashStream = require('hashstream');
 
-var stream = request('http://example.com');
-
-hashStream(stream, function(err, hash) {
-  if (!err) console.log("example.com SHA1 hash: ", hash);
+var example = request('http://example.com');
+hashStream(example, function(err, hash) {
+  if (!err) console.log("SHA1 hash of example.com: ", hash);
 });
 ```
 
+Get a md5 hash of google.com in base64
+```js
+var hashStream = require('hashstream');
+
+var google  = require('http://google.com');
+var options = { 'hash': 'md5', 'digest': 'base64' };
+
+hashStream(google, options, function(err, hash) {
+  if (!err) console.log("MD5 hash of google: ", hash);
+});
+```
 ## API
 
 ### hashstream(stream, [options], callback)
